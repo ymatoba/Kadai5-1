@@ -24,6 +24,8 @@ public class IntToEng {
 
 		if(n<=19)return first(n);
 		else if(n<=999)return second(n);
+		else if(n<=9999)return third(n);
+		else if(n<=99999)return forth(n);
 
 		//Œ…”‚Ì‚¨˜b
 		int length=0;
@@ -67,4 +69,26 @@ public class IntToEng {
 
 		else return "";
 	}
+	
+	static String third(int n){
+		String a[]={"zero","one","two","three","four","five","six","seven","eight","nine"};
+		
+		int x=n/1000;//1000‚ÌˆÊ
+		int p=(n-x*1000);
+		
+		return a[x]+" thousand "+second(p);
+	}
+	
+	static String forth(int n){
+		String a[]={"zero","one","two","three","four","five","six","seven","eight","nine"};
+		
+		int x=n/10000;//10000‚ÌˆÊ
+		int y=(n-x*10000)/1000;//1000‚ÌˆÊ
+		
+		int p=x*10+y;//ãˆÊ2Œ…
+		int q=(n-p*1000);//‰ºˆÊ3Œ…
+		
+		return second(p)+" thousand "+second(q);
+	}
+	
 }
