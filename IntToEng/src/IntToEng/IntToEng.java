@@ -35,13 +35,19 @@ public class IntToEng {
 		return length+"";
 	}
 
+	
 	static String first(int n){
 		String a[]={"zero","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixtenn","seventeen","eighteen","nineteen"};
 		return a[n];
 	}
+	
+	static String first2(int n){
+		String a[]={"","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixtenn","seventeen","eighteen","nineteen"};
+		return a[n];
+	}	
 
 	static String second(int n){
-		String a[]={"zero","one","two","three","four","five","six","seven","eight","nine"};
+		String a[]={"","one","two","three","four","five","six","seven","eight","nine"};
 		String b[]={"twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
 
 		if(n<=99){
@@ -76,7 +82,8 @@ public class IntToEng {
 		int x=n/1000;//1000‚ÌˆÊ
 		int p=(n-x*1000);
 		
-		return a[x]+" thousand "+second(p);
+		if(p<=19){return a[x]+" thousand "+first2(p);}
+		else{return a[x]+" thousand "+second(p);}
 	}
 	
 	static String forth(int n){
@@ -88,7 +95,9 @@ public class IntToEng {
 		int p=x*10+y;//ãˆÊ2Œ…
 		int q=(n-p*1000);//‰ºˆÊ3Œ…
 		
-		return second(p)+" thousand "+second(q);
+		if(p==10&&q<=19){return "ten thousand "+first2(q);}
+		else if(q<=19){return first2(p)+" thousand "+first2(q);}
+		else{return second(p)+" thousand "+second(q);}
 	}
 	
 }
