@@ -94,10 +94,14 @@ public class IntToEng {
 		
 		int p=x*10+y;//ãˆÊ2Œ…
 		int q=(n-p*1000);//‰ºˆÊ3Œ…
+		if(p<=19){ //first2ˆ—
+			if(q<=19)return first2(p)+" thousand "+first2(q);
+			else return first2(p)+" thousand "+second(q);
 		
-		if(p==10&&q<=19){return "ten thousand "+first2(q);}
-		else if(q<=19){return first2(p)+" thousand "+first2(q);}
-		else{return second(p)+" thousand "+second(q);}
+		}
+		else{ //not first2
+			if(q<=19)return second(p)+" thousand "+first2(q);
+			else return second(p)+" thousand "+second(q);
+		}
 	}
-	
 }
